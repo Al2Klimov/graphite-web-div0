@@ -22,6 +22,18 @@ node default {
 		require => Class['graphite'],
 	}
 
+	file { '/etc/icinga2/zones.conf':
+		source  => 'puppet:///modules/site_files/etc/icinga2/zones.conf',
+		require => Package['icinga2-bin'],
+	}
+	-> file { '/etc/icinga2/zones.d/MSEDGEWIN10':
+		ensure => directory,
+	}
+	-> file { '/etc/icinga2/zones.d/MSEDGEWIN10/MSEDGEWIN10.conf':
+		source => 'puppet:///modules/site_files/etc/icinga2/zones.d/MSEDGEWIN10/MSEDGEWIN10.conf',
+		notify => Service['icinga2'],
+	}
+
 	file { '/etc/icinga2/conf.d/api-users.conf':
 		source  => 'puppet:///modules/site_files/etc/icinga2/conf.d/api-users.conf',
 		require => Package['icinga2-bin'],
