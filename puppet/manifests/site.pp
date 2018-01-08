@@ -1,5 +1,6 @@
 node default {
 	include graphite
+	include icinga::master
 	include icinga::web
 
 	git::repo { '/usr/share/icingaweb2/modules/graphite':
