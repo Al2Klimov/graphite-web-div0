@@ -6,6 +6,7 @@ node default {
 	package { 'mariadb-server':
 	}
 	-> package { 'icinga2-ido-mysql':
+		require => Class['icinga::pkgrepo'],
 	}
 
 	exec { 'mysql-grant-icinga2':
