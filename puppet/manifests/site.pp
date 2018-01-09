@@ -43,7 +43,7 @@ node default {
 
 	git::repo { '/usr/share/icingaweb2/modules/graphite':
 		clone    => 'https://github.com/Icinga/icingaweb2-module-graphite.git',
-		checkout => 'd012b74fb2b7a2614956637a2bae43747a1f97c8',
+		checkout => '694fa82eaa0ac1e1a9310fa1a3194ffb956ca0e9',
 		require  => Class['icinga::web'],
 	}
 
