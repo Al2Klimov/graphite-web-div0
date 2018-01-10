@@ -1,0 +1,15 @@
+[Unit]
+Description=Graphite Carbon Cache
+After=network.target
+
+[Service]
+Type=forking
+StandardOutput=syslog
+StandardError=syslog
+User=graphite
+Group=graphite
+ExecStart=/opt/graphite/bin/carbon-cache.py --config=/opt/graphite/conf/carbon.conf --pidfile=/opt/graphite/carbon-cache.pid --syslog start
+PIDFile=/opt/graphite/carbon-cache.pid
+
+[Install]
+WantedBy=multi-user.target
